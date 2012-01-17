@@ -1,7 +1,7 @@
 <stack>
   <description brief="rgbdslam_freiburg">rgbdslam_freiburg contains the RGBD-SLAM application from Uni Freiburg</description>
   <author>Maintained by Felix Endres</author>
-  <license>BSD</license>  
+  <license>GPL v3</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/rgbdslam_freiburg</url>
   <depend stack="ros" />
@@ -12,15 +12,21 @@
   <depend package="roscpp"/>
   <depend package="rosbag"/>
   <depend package="pcl_ros"/>
-  <depend package="opencv2"/>
+  <!--depend package="opencv2"/-->
   <depend package="cv_bridge"/>
   <depend package="sensor_msgs"/>
-  <depend package="openni_camera"/>
+  <!--depend package="openni_camera"/-->
   <depend package="geometry_msgs"/>
-  <depend package="image_geometry"/>
-  <depend package="hogman_minimal"/>
   <depend package="visualization_msgs"/>
   <rosdep name="opengl"/>
   <rosdep name="qt4"/>
+  <rosdep name="libglew"/>
+  <rosdep name="libdevil"/>
+  <rosdep name="gsl-dev"/>
+  <export>
+    <rosdoc config="rosdoc.yaml" />
+    <nodelet plugin="${prefix}/nodelet_plugins.xml" />
+    <cpp cflags="-I${prefix}/srv_gen/cpp"/>
+ </export>
 
 </stack>
