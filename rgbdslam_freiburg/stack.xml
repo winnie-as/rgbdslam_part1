@@ -7,7 +7,6 @@
   <depend stack="ros" />
   <depend package="tf"/>
   <depend package="pcl"/>
-  <depend package="eigen"/>
   <depend package="rospy"/>
   <depend package="roscpp"/>
   <depend package="rosbag"/>
@@ -18,11 +17,12 @@
   <!--depend package="openni_camera"/-->
   <depend package="geometry_msgs"/>
   <depend package="visualization_msgs"/>
-  <rosdep name="opengl"/>
-  <rosdep name="qt4"/>
-  <rosdep name="libglew"/>
-  <rosdep name="libdevil"/>
-  <rosdep name="gsl-dev"/>
+  <rosdep name="libqt4-opengl-dev"/>
+  <rosdep name="libqt4-dev"/>
+  <rosdep name="libglew-dev"/>
+  <rosdep name="libdevil-dev"/>
+  <rosdep name="libgsl"/>
+  <rosdep name="eigen"/>
   <export>
     <rosdoc config="rosdoc.yaml" />
     <nodelet plugin="${prefix}/nodelet_plugins.xml" />
