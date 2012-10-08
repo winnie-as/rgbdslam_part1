@@ -5,28 +5,10 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/rgbdslam_freiburg</url>
   <depend stack="ros" />
-  <depend package="tf"/>
-  <depend package="pcl"/>
-  <depend package="rospy"/>
-  <depend package="roscpp"/>
-  <depend package="rosbag"/>
-  <depend package="pcl_ros"/>
-  <!--depend package="opencv2"/-->
-  <depend package="cv_bridge"/>
-  <depend package="sensor_msgs"/>
-  <!--depend package="openni_camera"/-->
-  <depend package="geometry_msgs"/>
-  <depend package="visualization_msgs"/>
-  <rosdep name="libqt4-opengl-dev"/>
-  <rosdep name="libqt4-dev"/>
-  <rosdep name="libglew-dev"/>
-  <rosdep name="libdevil-dev"/>
-  <rosdep name="libgsl"/>
-  <rosdep name="eigen"/>
-  <export>
-    <rosdoc config="rosdoc.yaml" />
-    <nodelet plugin="${prefix}/nodelet_plugins.xml" />
-    <cpp cflags="-I${prefix}/srv_gen/cpp"/>
- </export>
+  <depend stack="geometry"/>
+  <depend stack="perception_pcl"/>
+  <!--depend stack="opencv2"/-->
+  <depend stack="vision_opencv"/>
+  <!--depend stack="openni_camera"/-->
 
 </stack>
