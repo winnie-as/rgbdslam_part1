@@ -7,8 +7,8 @@
   <depend stack="ros" />
   <depend stack="geometry"/>
   <depend stack="perception_pcl"/>
-  <!--depend stack="opencv2"/-->
   <depend stack="vision_opencv"/>
-  <!--depend stack="openni_camera"/-->
+  <depend stack="common_msgs"/>
+  <!--depend stack="openni_kinect"/-->
 
 </stack>
