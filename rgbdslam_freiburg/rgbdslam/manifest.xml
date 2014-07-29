@@ -8,7 +8,8 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/rgbdslam</url>
   <depend package="tf"/>
-  <depend package="pcl"/>
+  <rosdep name="libpcl-all"/>
+  <rosdep name="libpcl-all-dev"/>
   <depend package="rospy"/>
   <depend package="roscpp"/>
   <depend package="rosbag"/>
@@ -17,8 +18,8 @@
   <depend package="cv_bridge"/>
   <depend package="sensor_msgs"/>
   <!--depend package="openni_camera"/-->
-  <depend package="octomap_server"/>
-  <depend package="octomap_ros"/>
+  <rosdep name="octomap_server"/>
+  <rosdep name="octomap_ros"/>
   <depend package="geometry_msgs"/>
   <depend package="visualization_msgs"/>
   <rosdep name="libqt4-opengl-dev"/>
@@ -28,7 +29,7 @@
   <rosdep name="libgsl"/>
   <!--rosdep name="gl2ps"/-->
   <rosdep name="eigen"/>
-  <rosdep name="libg2o"/>
+  <depend package="g2o"/>
   <rosdep name="octomap"/>
   <export>
     <rosdoc config="rosdoc.yaml" />
