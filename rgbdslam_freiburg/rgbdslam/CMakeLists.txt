@@ -65,6 +65,30 @@ rosbuild_gensrv()
 ##############################################################################
 
 #############################
+# pcl #######################
+#############################
+find_package(PCL 1.7 REQUIRED)
+include_directories(${PCL_INCLUDE_DIRS})
+#add_definitions(${PCL_DEFINITIONS})
+link_directories(${PCL_DIRECTORIES})
+
+#############################
+# Octomap_ros ###############
+#############################
+find_package(octomap_ros REQUIRED)
+include_directories(${OCTOMAP_ROS_INCLUDE_DIRS})
+link_directories(${OCTOMAP_ROS_LIBRARY_DIRS})
+link_libraries(${OCTOMAP_ROS_LIBRARIES})
+
+#############################
+# Octomap_server#############
+#############################
+find_package(octomap_server REQUIRED)
+include_directories(${OCTOMAP_SERVER_INCLUDE_DIRS})
+link_directories(${OCTOMAP_SERVER_LIBRARY_DIRS})
+link_libraries(${OCTOMAP_SERVER_LIBRARIES})
+
+#############################
 # Octomap ###################
 #############################
 find_package(octomap REQUIRED)
@@ -93,7 +117,7 @@ LINK_DIRECTORIES(${LIBRARY_OUTPUT_PATH})
 SET(${CMAKE_LIBRARY_PATH} ${LIBRARY_OUTPUT_PATH})
 #SET(CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE TRUE)
 
-find_package(libg2o REQUIRED)
+#find_package(libg2o REQUIRED)
 ADD_DEFINITIONS(-DDO_FEATURE_OPTIMIZATION)
 
 
@@ -215,10 +239,12 @@ file(GLOB_RECURSE QT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINK
 ##############################################################################
 rosbuild_add_executable(rgbdslam ${QT_SOURCES} ${QT_RESOURCES_CPP} ${QT_FORMS_HPP} ${QT_MOC_HPP})
 
+target_link_libraries(rgbdslam ${PCL_LIBRARIES})
 #set libs
-#SET(G2O_LIBS cholmod g2o_core g2o_stuff g2o_types_slam3d g2o_solver_cholmod g2o_solver_pcg g2o_solver_csparse cxsparse g2o_incremental)
-SET(G2O_LIBS ${libg2o_LIBRARIES} cholmod cxsparse)
-#SET(LIBS_LINK GL GLU -lgl2ps ${G2O_LIBS} ${QT_LIBRARIES} ${QT_QTOPENGL_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS})
+
+SET(G2O_LIBS cholmod g2o_core g2o_stuff g2o_types_slam3d g2o_solver_cholmod g2o_solver_pcg g2o_solver_csparse cxsparse g2o_incremental g2o_csparse_extension)
+SET(G2O_LIBS ${G2O_LIBS} ${libg2o_LIBRARIES} cholmod cxsparse)
+SET(LIBS_LINK GL GLU -lgl2ps ${G2O_LIBS} ${QT_LIBRARIES} ${QT_QTOPENGL_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS})
 SET(LIBS_LINK GL GLU ${G2O_LIBS} ${QT_LIBRARIES} ${QT_QTOPENGL_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} -lboost_signals -lrt -loctomap -loctomap_server -loctomath)
 
 IF (${USE_SIFT_GPU})
@@ -238,4 +264,3 @@ IF (${USE_GICP})
   set(ROS_COMPILE_FLAGS ${ROS_COMPILE_FLAGS} -fpermissive)
   rosbuild_add_library(gicp external/gicp/bfgs_funcs.cpp external/gicp/gicp.cpp external/gicp/optimize.cpp external/gicp/scan.cpp external/gicp/transform.cpp)
 ENDIF (${USE_GICP})
-
