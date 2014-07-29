@@ -14,7 +14,7 @@
  * along with RGBDSLAM.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
+#include <pcl/common/distances.h>
 #include "ros/ros.h"
 #include <QtGui>
 #include <QtOpenGL>
