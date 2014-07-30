@@ -62,18 +62,18 @@ void ParameterServer::defaultConfig() {
   addOption("octomap_online_creation",       static_cast<bool> (false),                 "Create the octomap during mapping. If using this, every node will be rendered to the octomap directly after they have been added to the graph (and graph optimization, if not skipped b/c of optimizer_skip_step).");
   addOption("screencast_path_prefix",        std::string(""),                           "If set: capture frames for a screencast with this path as filename-prefix.");
  
-  addOption("octomap_pc_min_z",        static_cast<double> (-0.60),                 "Minimum height of occupied cells to be allowed through filter for the map");      
-  addOption("octomap_pc_max_z",        static_cast<double> (0.60),                  "Maximum height of occupied cells to be allowed through filter for the map");      
-  addOption("octomap_maxRange",        static_cast<double> (-1.0),                  "Maximum range to include in map");                                                 
-  addOption("octomap_latch_topic",     static_cast<bool> (true),                    "Published topics to be latched or not");                                      
-  addOption("octomap_server_groundfilter",    static_cast<bool> (true),                   "filter ground or not");                                                 
-  addOption("octomap_ground_filter_distance", static_cast<double> (0.030),                "Points at this threshold distance from the plane considered to be part of ground plane");   
-  addOption("octomap_ground_filter_plane_distance",  static_cast<double> (0.60),          "Approx z-distance of ground from world-frame origin");                      
-  addOption("octomap_ground_filter_angle",    static_cast<double>  (0.10),                    "Threshold angle between ground plane and z=0 plane wrt world frame");       
+  addOption("octomap_pc_min_z",              static_cast<double> (-0.60),               "Minimum height of occupied cells to be allowed through filter for the map");      
+  addOption("octomap_pc_max_z",              static_cast<double> (0.60),                "Maximum height of occupied cells to be allowed through filter for the map");      
+  addOption("octomap_maxRange",              static_cast<double> (-1.0),                "Maximum range to include in map");                                                 
+  addOption("octomap_latch_topic",           static_cast<bool> (true),                  "Published topics to be latched or not");                                      
+  addOption("octomap_server_groundfilter",   static_cast<bool> (true),                  "Filter ground or not. Set to true so that 2-d collision map doesn’t include ground as an obstacle ");                                                 
+  addOption("octomap_ground_filter_distance",        static_cast<double> (0.030),       "Points at this threshold distance from the plane considered to be part of ground plane");   
+  addOption("octomap_ground_filter_plane_distance",  static_cast<double> (0.60),        "Approx z-distance of ground from world-frame origin");                      
+  addOption("octomap_ground_filter_angle",   static_cast<double>  (0.10),               "Threshold angle between ground plane and z=0 plane wrt world frame");       
 
 // online 2-d map settings
   addOption("send_clouds_interval",         static_cast<int> (8),                        "No. of new node additions after which pointclouds are sent");
-  addOption("send_LatestClouds_number",     static_cast<int> (10),                        "No. of latest clouds to be sent each time. Has to be greater than send_clouds_interval."); 
+  addOption("send_LatestClouds_number",     static_cast<int> (10),                       "No. of latest clouds to be sent each time. Has to be greater than send_clouds_interval."); 
 
 
   // TF information settings 
