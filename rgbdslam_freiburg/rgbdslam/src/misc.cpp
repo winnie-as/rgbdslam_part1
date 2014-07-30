@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with RGBDSLAM.  If not, see <http://www.gnu.org/licenses/>.
  */
+ #include <pcl_conversions/pcl_conversions.h>
+#include <pcl/common/distances.h>
 #include <ros/ros.h>
 #include <tf/transform_datatypes.h>
 #include <Eigen/Core>
@@ -554,7 +556,7 @@ pointcloud_type* createXYZRGBPointCloud (const sensor_msgs::ImageConstPtr& depth
 {
   ScopedTimer s(__FUNCTION__);
   pointcloud_type* cloud (new pointcloud_type() );
-  cloud->header.stamp     = depth_msg->header.stamp;
+  pcl_conversions::fromPCL(cloud->header).stamp     = depth_msg->header.stamp;
   cloud->header.frame_id  = rgb_msg->header.frame_id;
   cloud->is_dense         = false; //single point of view, 2d rasterized NaN where no depth value was found
 
