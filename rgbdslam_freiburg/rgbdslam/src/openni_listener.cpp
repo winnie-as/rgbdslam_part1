@@ -16,6 +16,7 @@
 
 
 //Documentation see header file
+#include <pcl_conversions/pcl_conversions.h>
 #include "pcl/ros/conversions.h"
 #include <pcl/io/io.h>
 //#include "pcl/common/transform.h"
@@ -562,7 +563,7 @@ void OpenNIListener::cameraCallback(cv::Mat visual_img,
   Q_EMIT setGUIStatus("Computing Keypoints and Features");
   Node* node_ptr = new Node(visual_img, detector_, extractor_, point_cloud, depth_mono8_img);
 
-  retrieveTransformations(point_cloud->header, node_ptr);
+  retrieveTransformations(pcl_conversions::fromPCL(point_cloud->header), node_ptr);
   callProcessing(visual_img, node_ptr);
 }
 
