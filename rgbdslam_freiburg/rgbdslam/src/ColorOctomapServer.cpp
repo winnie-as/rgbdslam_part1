@@ -30,6 +30,21 @@ void ColorOctomapServer::reset()
   m_octoMap.octree.setOccupancyThres(ps->get<double>("octomap_occupancy_threshold"));
   m_octoMap.octree.setProbHit(ps->get<double>("octomap_prob_hit"));
   m_octoMap.octree.setProbMiss(ps->get<double>("octomap_prob_miss"));
+  
+  m_pointcloudMinZ=ps->get<double>("octomap_pc_min_z");
+  m_pointcloudMaxZ=ps->get<double>("octomap_pc_max_z");
+  m_maxRange=ps->get<double>("octomap_maxRange");
+  m_latchedTopics= ps->get<bool>("octomap_latch_topic");
+  m_res=ps->get<double>("octomap_resolution");
+   
+  m_filterGroundPlane=ps->get<bool>("octomap_server_groundfilter");
+  m_groundFilterDistance=ps->get<double>("octomap_ground_filter_distance");
+  m_groundFilterPlaneDistance=ps->get<double>("octomap_ground_filter_plane_distance");
+  m_groundFilterAngle=ps->get<double>("octomap_ground_filter_angle");
+  
+  m_baseFrameId="/camera_link";  
+  m_gridmap.info.resolution=m_res;
+
 }
 
 bool ColorOctomapServer::save(const char* filename) const
