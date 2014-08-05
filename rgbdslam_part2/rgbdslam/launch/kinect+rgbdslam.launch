@@ -1,0 +1,11 @@
+<!-- This file demonstrates the use of SIFT features for online SLAM with a Kinect.
+    The openni driver is started from this file -->
+<launch>
+ <include file="$(find openni_launch)/launch/openni.launch"/>
+ <node pkg="rgbdslam" type="rgbdslam" name="rgbdslam" cwd="node" required="true" output="screen" >  <!--no-launch-prefix="/usr/bin/xterm -e gdb -ex run -args" -->
+    <remap from="/rgbdslam/batch_clouds" to="/cloud_in"/>
+<!-- Input data settings-->
+   <param name="config/topic_image_mono"              value="/camera/rgb/image_rect_color"/> <!--could also be color -->
+   <param name="config/topic_image_depth"             value="/camera/depth_registered/sw_registered/image_rect_raw"/>
+     </node>
+</launch>
